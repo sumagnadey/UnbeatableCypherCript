@@ -6,12 +6,12 @@ public class UnbeatableCipherCrypt{
     private String[][] S;
     private String password;
     UnbeatableCipherCrypt(String pass) {
-        this(pass, "aabb09182736ccdd");
+        this(pass, "aabb09182736ccdf");
     }
     UnbeatableCipherCrypt(String pass, String k){
         this.S = DataRet.S;
         this.P = DataRet.P;
-        this.password = pass;
+        this.password = StringToHexStr.strToHexStr(pass);
         this.k = k;
         keyGen();
     }
@@ -30,6 +30,11 @@ public class UnbeatableCipherCrypt{
         int s3 = HexToDec.hex2decimal(left.substring(4, 6));
         int s4 = HexToDec.hex2decimal(left.substring(6, 8));
 
+        System.out.println("*********************");
+        System.out.println(left);
+        System.out.println(s1 + " " + s2 + " " + s3 + " " + s4);
+        System.out.println("*********************");
+
         int res1 = (HexToDec.hex2decimal(S[0][s1]) + HexToDec.hex2decimal((S[1][s2])));
         int res2 = (HexToDec.hex2decimal(S[2][s3]) ^ res1);
         int res = (HexToDec.hex2decimal(S[3][s4]) + res2);
@@ -45,10 +50,12 @@ public class UnbeatableCipherCrypt{
     }
     public String encrypt() {
         for(int i = 0; i < 16; i++) {
-            String binPass = HexToBin.hexToBin(StringToHexStr.strToHexStr(password));
-            String left = binPass.substring(0, 32);
-            String right = binPass.substring(32, 64);
-            round(BinToHex.binToHex(left), BinToHex.binToHex(right), i);
+            // String binPass = HexToBin.hexToBin(StringToHexStr.strToHexStr(password));
+            String binPass = password;
+            String left = binPass.substring(0, binPass.length() / 2);
+            String right = binPass.substring(binPass.length() / 2, binPass.length());
+            round(left, right, i);
+            // System.out.println(password);
         }
         String left = password.substring(0, 4);
         String right = password.substring(4, 8);

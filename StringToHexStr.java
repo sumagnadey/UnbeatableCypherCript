@@ -17,7 +17,7 @@ class StringToHexStr{
         return hexPass;
     }
     public static void main(String[] args) {
-        String str = "Password";
+        String str = "password";
         System.out.println(strToHexStr(str));
         // System.out.println(HexToBin.hexToBin(strToHexStr(str)));
         //HexStrToStr.hexStrtoS("123456abcd132536");

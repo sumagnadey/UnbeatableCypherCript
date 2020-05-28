@@ -8,4 +8,4 @@ Blowfish is an encryption algorithm used in many security applications. For more
 
 ### CONTRIBUTIONS
 ---
-If you're reading this, you're awesome! Thank you for helping us make this mini-project great and help us learn together. Please send a pull request and leave a message explaining the benifits of the changes.
+If you're reading this, you're awesome! Thank you for helping us make this mini-project great and help us learn together. Please send a pull request and leave a message explaining the benifits of the change.
